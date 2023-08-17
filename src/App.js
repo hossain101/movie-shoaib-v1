@@ -2,6 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import api from "./api/axiosConfig";
 import { useState, useEffect } from "react";
+import Layout from "./component/layout";
+import { Routes,Route } from "react-router-dom";
+import Home from "./component/home/Home";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -20,7 +23,13 @@ function App() {
     getMovies();
   }, []);
 
-  return <div className="App"></div>;
+  return <div className="App">
+    <Routes>
+      <Route path="/" element={<Layout></Layout>} >
+        <Route path="/" element={<Home />} />
+         </Route>
+    </Routes>
+  </div>;
 }
 
 export default App;
